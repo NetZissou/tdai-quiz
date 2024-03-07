@@ -6,7 +6,7 @@ title: Blog Archive
 {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
 {% for post in sorted_posts %}
   {% unless post.previous %}
-    #{{ post.date | date: '%B %Y' }}
+    <h3>{{ post.date | date: '%B %Y' }}</h3>
   {% else %}
     {% capture current_date %}{{ post.date | date: '%B %Y' }}{% endcapture %}
     {% capture previous_date %}{{ post.previous.date | date: '%B %Y' }}{% endcapture %}
