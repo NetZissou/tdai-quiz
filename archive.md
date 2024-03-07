@@ -3,6 +3,7 @@ layout: page
 title: Blog Archive
 ---
 
+{% raw %}
 {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
 {% for post in sorted_posts %}
   {% unless post.previous %}
@@ -18,3 +19,4 @@ title: Blog Archive
       <li>{{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a></li>
   </ul>
 {% endfor %}
+{% endraw %}
