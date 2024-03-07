@@ -1,16 +1,20 @@
 ---
 layout: page
-title: Quiz Archive
+title: Blog Archive
 ---
 
-{% assign sorted_posts = site.posts | sort: 'date' %}
-{% assign grouped_posts = sorted_posts | group_by_exp: "post", "post.date | date: '%Y %B'" %}
-
-{% for group in grouped_posts %}
-  <h3>{{ group.name }}</h3>
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% for post in sorted_posts %}
+  {% unless post.previous %}
+    <h3>{{ post.date | date: '%B %Y' }}</h3>
+  {% else %}
+    {% capture current_date %}{{ post.date | date: '%B %Y' }}{% endcapture %}
+    {% capture previous_date %}{{ post.previous.date | date: '%B %Y' }}{% endcapture %}
+    {% if current_date != previous_date %}
+      <h3>{{ current_date }}</h3>
+    {% endif %}
+  {% endunless %}
   <ul>
-    {% for post in group.items %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%d %B %Y" }}</li>
-    {% endfor %}
+      <li>{{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a></li>
   </ul>
 {% endfor %}
