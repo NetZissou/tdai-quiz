@@ -1,4 +1,4 @@
-# TDAI Data Science Pop Quiz
+# Data Science Pop Quiz
 
 ## Objectives
 The main objective of this event would be to have Zoey, Alex, Matt, and Net together regularly to share knowledge, chat about algorithms, continue learning, and hang out. 
