@@ -3,12 +3,9 @@ layout: page
 title: Blog Archive
 ---
 
-{% raw %}
 {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
 {% for post in sorted_posts %}
   {% unless post.previous %}
-    <h3>{{ post.date | date: '%B %Y' }}</h3>
-  {% else %}
     {% capture current_date %}{{ post.date | date: '%B %Y' }}{% endcapture %}
     {% capture previous_date %}{{ post.previous.date | date: '%B %Y' }}{% endcapture %}
     {% if current_date != previous_date %}
@@ -19,4 +16,3 @@ title: Blog Archive
       <li>{{ post.date | date: "%B %d, %Y" }} - <a href="{{ post.url }}">{{ post.title }}</a></li>
   </ul>
 {% endfor %}
-{% endraw %}
